@@ -139,11 +139,14 @@ function markdownToHtml(markdown) {
       continue
     }
 
-    // Handle video tags: <video src="..." controls class="..."></video>
-    const videoLine = line.match(/^<video\s+src="([^"]+)"\s+(?:controls\s+)?class="([^"]+)"\s*><\/video>$/)
+    // Handle video tags: any <video ...></video> tag on its own line
+    const videoLine = line.match(/^<video\s+[^>]*src="([^"]+)"[^>]*><\/video>$/)
     if (videoLine) {
-      const src = videoLine[1]
-      const className = videoLine[2]
+      // Extract src and class from the tag
+      const srcMatch = line.match(/src="([^"]+)"/)
+      const classMatch = line.match(/class="([^"]+)"/)
+      const src = srcMatch ? srcMatch[1] : ''
+      const className = classMatch ? classMatch[1] : 'w-full my-8 rounded-lg'
       html.push(`<video src="${src}" autoplay loop muted playsinline class="${className}"></video>`)
       i++
       continue
@@ -198,10 +201,12 @@ function markdownToHtml(markdown) {
     }
 
     // Check if line contains HTML video tag
-    const videoTagMatch = line.match(/<video\s+src="([^"]+)"\s+(?:controls\s+)?class="([^"]+)"\s*><\/video>/)
+    const videoTagMatch = line.match(/<video\s+[^>]*src="([^"]+)"[^>]*><\/video>/)
     if (videoTagMatch) {
-      const src = videoTagMatch[1]
-      const className = videoTagMatch[2]
+      const srcMatch = line.match(/src="([^"]+)"/)
+      const classMatch = line.match(/class="([^"]+)"/)
+      const src = srcMatch ? srcMatch[1] : ''
+      const className = classMatch ? classMatch[1] : 'w-full my-8 rounded-lg'
       html.push(`<video src="${src}" autoplay loop muted playsinline class="${className}"></video>`)
       i++
       continue
@@ -212,7 +217,7 @@ function markdownToHtml(markdown) {
     while (i < lines.length && !/^\s*$/.test(lines[i])) {
       if (/^(?:```|#{1,6}\s|>\s|[-*]\s|\d+\.\s)/.test(lines[i])) break
       // Check if next line is a video tag
-      if (lines[i].match(/<video\s+src="([^"]+)"\s+(?:controls\s+)?class="([^"]+)"\s*><\/video>/)) break
+      if (lines[i].match(/<video\s+[^>]*src="[^"]+"[^>]*><\/video>/)) break
       para.push(lines[i])
       i++
     }
