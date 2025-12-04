@@ -12,7 +12,8 @@
   }
 
   .prose h3 {
-    @apply text-xl font-medium mb-2 mt-4;
+    @apply font-medium mb-2 mt-4;
+    font-size: 16px;
   }
 
   .prose p {

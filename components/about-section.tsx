@@ -5,8 +5,8 @@ export function AboutSection() {
     <div className="flex flex-col justify-between min-h-full">
       <div className="space-y-8">
       <div>
-        <h1 className="text-5xl font-serif mb-2">flo·guo</h1>
-        <p className="text-muted-foreground text-sm">/ˈfloʊ.ɡwoʊ/</p>
+        <h1 className="text-5xl font-serif mb-2">ÌníOlúwa Abíódún</h1>
+        <p className="text-muted-foreground text-sm">Designer and builder with founding-level experience across early and mature B2B/B2C teams. Building Aivie, health intelligence for chronic pain management.</p>
       </div>
 
       <div className="space-y-4">

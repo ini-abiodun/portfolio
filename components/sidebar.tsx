@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils"
 import { ResizeHandle } from "./resize-handle"
 
-type Tab = "about" | "bookshelf" | "notes"
+type Tab = "about" | "bookshelf" | "notes" | "case-studies"
 
 interface SidebarProps {
   activeTab: Tab
@@ -13,16 +13,16 @@ interface SidebarProps {
 }
 
 export function Sidebar({ activeTab, onTabChange, width, isDragging, onMouseDown, mobileMenuOpen }: SidebarProps) {
-  const tabs: Tab[] = ["about", "bookshelf", "notes"]
+  const tabs: Tab[] = ["about", "bookshelf", "notes", "case-studies"]
 
   return (
     <aside
       style={{ width: `${width}px`, borderRight: '3px double var(--border)' }}
       className={cn(
-        "relative shrink-0 bg-background",
-        "max-md:fixed max-md:inset-y-0 max-md:left-0 max-md:z-40 max-md:shadow-lg",
+        "fixed left-0 top-0 h-screen shrink-0 bg-background z-30",
         "max-md:transition-transform max-md:duration-150",
         mobileMenuOpen ? "max-md:translate-x-0" : "max-md:-translate-x-full",
+        "max-md:shadow-lg",
       )}
     >
       {/* Ribbon Bookmark */}
@@ -30,8 +30,8 @@ export function Sidebar({ activeTab, onTabChange, width, isDragging, onMouseDown
         <div
           className="w-full h-full relative overflow-hidden"
           style={{
-            background: 'linear-gradient(135deg, oklch(0.42 0.18 25), oklch(0.52 0.18 25) 50%, oklch(0.42 0.18 25))',
-            border: '1px solid oklch(0.42 0.18 25)',
+            background: 'linear-gradient(135deg, #1F0405, #2a0607 50%, #1F0405)',
+            border: '1px solid #1F0405',
             clipPath: 'polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 12px), 0 100%)',
             boxShadow: '2px 2px 6px rgba(0,0,0,0.3), inset -1px -1px 2px rgba(0,0,0,0.2)',
           }}
@@ -58,10 +58,19 @@ export function Sidebar({ activeTab, onTabChange, width, isDragging, onMouseDown
               activeTab === tab ? "text-foreground" : "text-foreground/40 hover:text-foreground/70",
             )}
           >
-            {tab.charAt(0).toUpperCase() + tab.slice(1)}
+            {tab === "case-studies" ? "Case Studies" : tab.charAt(0).toUpperCase() + tab.slice(1)}
           </button>
         ))}
       </nav>
+
+      {/* Wax Seal */}
+      <div className="absolute bottom-8 left-8 z-10">
+        <img 
+          src="/IniOluwa Seal 1.png" 
+          alt="OMÒ ASÍWAJU Seal" 
+          className="w-20 h-20 object-contain"
+        />
+      </div>
 
       <ResizeHandle onMouseDown={onMouseDown} isDragging={isDragging} />
     </aside>
