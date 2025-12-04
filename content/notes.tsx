@@ -27,5 +27,12 @@ export const notes: Note[] = [
     "date": "January 2025",
     "excerpt": "",
     "content": "<p>This is an example of a longer-form note or essay. You can use this space to share your thoughts, reflections, or stories.</p>\n<p>The template supports all standard Markdown features, so you can structure your content however you like.</p>\n<h2>Formatting Examples</h2>\n<p>You can use headers to organize your content into sections.</p>\n<h3>Subsections work too</h3>\n<p>And you can nest them as deeply as needed.</p>\n<h2>Quotes and Emphasis</h2>\n<blockquote>This is a blockquote. Great for highlighting important ideas or quotes.</blockquote>\n<p>You can also use <strong class=\"font-semibold\">bold text</strong> and <em>italic text</em> for emphasis.</p>\n<h2>Lists and More</h2>\n<p>The sky's the limit with what you can write here. This is your space to share your ideas with the world.</p>"
+  },
+  {
+    "slug": "you-are-not-a-tree",
+    "title": "You Are Not A Tree. Move.",
+    "date": "12-04-2025",
+    "excerpt": "I said this to a friend earlier this week. They were describing how they felt in a situation that was not of their making.",
+    "content": "<p>I said this to a friend earlier this week. They were describing how they felt in a situation that was not of their making.</p>\n<p>But as they talked, I could hear something else beneath: a familiar kind of paralysis, a waiting for the right moment or the right permission or the right conditions.</p>\n<p>The question isn't whether you're stuck. Lots of us get stuck, through circumstances we didn't choose and couldn't prevent. The question is: what separates people who find a way to move from people who stay stuck?</p>\n<p>I've been thinking about this a lot lately, partly because of that conversation, partly because I just celebrated with another friend who recently quit a job that was draining them and partly because I realised somewhere along the way, I'd unintentionally unlearned something I once knew very well.</p>\n<p>That you can just do stuff.</p>"
   }
 ]

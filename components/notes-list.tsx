@@ -35,7 +35,7 @@ export function NotesList({ selectedNote, onSelectNote, width, isDragging, onMou
       <div className="px-6 md:px-16 pt-20 md:pt-16 pb-0 w-full md:max-w-3xl flex flex-col justify-between min-h-full">
         <div>
           <h1 className="text-4xl font-serif mb-8">Notes</h1>
-          <p className="text-muted-foreground mb-8">Field observations & works-in-progress.</p>
+          <p className="text-muted-foreground mb-8">Thoughts, essays and insights.</p>
           <div className="space-y-0">
             {sortedNotes.map((note, index) => (
               <div key={note.slug} className="relative">
