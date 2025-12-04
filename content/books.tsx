@@ -4,6 +4,7 @@ export interface Book {
   author: string
   year: number
   lastUpdated?: string
+  coverImage?: string
   hasNotes: boolean
   isReading: boolean
   content: string
@@ -19,6 +20,17 @@ export const books: Book[] = [
     "hasNotes": true,
     "isReading": true,
     "content": "<ul><li>Zen and the Art of Motorcycle Maintenance, Robert Pirsig (1974), p. 38</li></ul>"
+  },
+  {
+    "slug": "circe",
+    "title": "Circe",
+    "author": "Madeline Miller",
+    "year": 2018,
+    "lastUpdated": "12-04-2025",
+    "hasNotes": true,
+    "isReading": true,
+    "coverImage": "/Bookshelf/Circe.png",
+    "content": "<blockquote>*This book was gifted to me by Calix.*</blockquote>\n<p>TO BE CONTINUED...</p>"
   },
   {
     "slug": "colors-of-wes-anderson",

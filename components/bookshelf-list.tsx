@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import { books } from "@/content/books"
 import { cn } from "@/lib/utils"
 import { ResizeHandle } from "./resize-handle"
@@ -12,6 +15,10 @@ interface BookshelfListProps {
 }
 
 export function BookshelfList({ selectedBook, onSelectBook, width, isDragging, onMouseDown }: BookshelfListProps) {
+  const [hoveredBook, setHoveredBook] = useState<string | null>(null)
+
+  const hoveredBookData = hoveredBook ? books.find(b => b.slug === hoveredBook) : null
+
   return (
     <div
       style={{ width: `${width}px` }}
@@ -20,6 +27,24 @@ export function BookshelfList({ selectedBook, onSelectBook, width, isDragging, o
         selectedBook && "max-md:hidden",
       )}
     >
+      {/* Hover book cover - positioned in middle of viewport */}
+      {hoveredBookData?.coverImage && (
+        <div 
+          className="fixed pointer-events-none z-50"
+          style={{
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}
+        >
+          <img
+            src={hoveredBookData.coverImage}
+            alt={hoveredBookData.title}
+            className="w-48 h-auto object-contain shadow-2xl rounded-sm"
+          />
+        </div>
+      )}
+
       <div className="px-8 md:px-16 pt-28 md:pt-16 pb-0 max-w-3xl flex flex-col justify-between min-h-full">
         <div>
           <h1 className="text-4xl font-serif mb-8">Bookshelf</h1>
@@ -30,7 +55,7 @@ export function BookshelfList({ selectedBook, onSelectBook, width, isDragging, o
             <ol className="space-y-0">
               {books
                 .filter((book) => book.isReading)
-                .map((book, index, filteredBooks) => (
+                .map((book) => (
                   <li key={book.slug} className="text-foreground">
                     <div className="inline-block align-top" style={{ width: "calc(100% - 1.5em)" }}>
                       <button
@@ -39,6 +64,8 @@ export function BookshelfList({ selectedBook, onSelectBook, width, isDragging, o
                             onSelectBook(book.slug)
                           }
                         }}
+                        onMouseEnter={() => book.coverImage && setHoveredBook(book.slug)}
+                        onMouseLeave={() => setHoveredBook(null)}
                         disabled={!book.hasNotes}
                         className={cn(
                           "w-full text-left space-y-1.5 py-3 transition-colors group",
@@ -67,7 +94,7 @@ export function BookshelfList({ selectedBook, onSelectBook, width, isDragging, o
             <ol className="space-y-0">
               {books
                 .filter((book) => !book.isReading)
-                .map((book, index, filteredBooks) => (
+                .map((book) => (
                   <li key={book.slug} className="text-foreground">
                     <div className="inline-block align-top">
                       <button
@@ -76,6 +103,8 @@ export function BookshelfList({ selectedBook, onSelectBook, width, isDragging, o
                             onSelectBook(book.slug)
                           }
                         }}
+                        onMouseEnter={() => book.coverImage && setHoveredBook(book.slug)}
+                        onMouseLeave={() => setHoveredBook(null)}
                         disabled={!book.hasNotes}
                         className={cn(
                           "w-full text-left space-y-1.5 py-3 transition-colors group",

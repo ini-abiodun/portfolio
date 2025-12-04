@@ -297,6 +297,7 @@ function generateBooks() {
     const lastUpdated = data.lastUpdated
     const hasNotes = data.hasNotes ?? (mdxContent.trim().length > 0)
     const isReading = data.isReading ?? false
+    const coverImage = data.coverImage || ""
     const content = markdownToHtml(mdxContent)
 
     return {
@@ -307,6 +308,7 @@ function generateBooks() {
       ...(lastUpdated && { lastUpdated }),
       hasNotes,
       isReading,
+      ...(coverImage && { coverImage }),
       content,
     }
   })
@@ -317,6 +319,7 @@ function generateBooks() {
   author: string
   year: number
   lastUpdated?: string
+  coverImage?: string
   hasNotes: boolean
   isReading: boolean
   content: string
