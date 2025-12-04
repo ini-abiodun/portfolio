@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { books } from "@/content/books"
 import { cn } from "@/lib/utils"
 import { ResizeHandle } from "./resize-handle"
@@ -27,23 +28,45 @@ export function BookshelfList({ selectedBook, onSelectBook, width, isDragging, o
         selectedBook && "max-md:hidden",
       )}
     >
-      {/* Hover book cover - positioned in middle of viewport */}
-      {hoveredBookData?.coverImage && (
-        <div 
-          className="fixed pointer-events-none z-50"
-          style={{
-            left: '50%',
-            top: '50%',
-            transform: 'translate(-50%, -50%)',
-          }}
-        >
-          <img
-            src={hoveredBookData.coverImage}
-            alt={hoveredBookData.title}
-            className="w-48 h-auto object-contain shadow-2xl rounded-sm"
-          />
-        </div>
-      )}
+      {/* Hover book cover - positioned in middle of viewport with smooth animation */}
+      <AnimatePresence>
+        {hoveredBookData?.coverImage && (
+          <motion.div 
+            className="fixed pointer-events-none z-50"
+            style={{
+              left: '50%',
+              top: '50%',
+              x: '-50%',
+              y: '-50%',
+            }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{
+              type: "spring",
+              stiffness: 400,
+              damping: 25,
+              mass: 0.5,
+            }}
+          >
+            <motion.img
+              src={hoveredBookData.coverImage}
+              alt={hoveredBookData.title}
+              className="w-48 h-auto object-contain rounded-sm"
+              style={{
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.4)',
+              }}
+              initial={{ y: 10 }}
+              animate={{ y: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
+              }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="px-8 md:px-16 pt-28 md:pt-16 pb-0 max-w-3xl flex flex-col justify-between min-h-full">
         <div>

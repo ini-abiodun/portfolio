@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { Footer } from "./footer"
 
 interface AboutSectionProps {
@@ -32,22 +33,36 @@ export function AboutSection({ onNavigateToSpeaking }: AboutSectionProps) {
 
   return (
     <div className="flex flex-col justify-between min-h-full" onMouseMove={handleMouseMove}>
-      {/* Hover image */}
-      {showImage && (
-        <div
-          className="fixed pointer-events-none z-50 transition-opacity duration-200"
-          style={{
-            left: imagePosition.x + 20,
-            top: imagePosition.y - 100,
-          }}
-        >
-          <img
-            src="/About/Ini-Illustrated-Headshot-2025 2.PNG"
-            alt="Ìní·Olúwa"
-            className="w-32 h-32 object-cover rounded-lg shadow-lg"
-          />
-        </div>
-      )}
+      {/* Hover image with smooth animation */}
+      <AnimatePresence>
+        {showImage && (
+          <motion.div
+            className="fixed pointer-events-none z-50"
+            style={{
+              left: imagePosition.x + 20,
+              top: imagePosition.y - 100,
+            }}
+            initial={{ opacity: 0, scale: 0.8, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 5 }}
+            transition={{
+              type: "spring",
+              stiffness: 400,
+              damping: 25,
+              mass: 0.5,
+            }}
+          >
+            <img
+              src="/About/Ini-Illustrated-Headshot-2025 2.PNG"
+              alt="Ìní·Olúwa"
+              className="w-32 h-32 object-cover rounded-lg"
+              style={{
+                boxShadow: '0 20px 40px -12px rgba(0, 0, 0, 0.35)',
+              }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="space-y-8">
         <div>
