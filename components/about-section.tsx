@@ -42,7 +42,7 @@ export function AboutSection({ onNavigateToSpeaking }: AboutSectionProps) {
           }}
         >
           <img
-            src="/about/Ini-Illustrated-Headshot-2025 2.PNG"
+            src="/About/Ini-Illustrated-Headshot-2025 2.PNG"
             alt="Ìní·Olúwa"
             className="w-32 h-32 object-cover rounded-lg shadow-lg"
           />
