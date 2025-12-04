@@ -30,7 +30,7 @@ function markdownToHtml(markdown) {
     }
 
     // Replace images with placeholders
-    let processedText = text.replace(imagePattern, '___IMAGE___')
+    let processedText = text.replace(imagePattern, 'IMAGEPLACEHOLDER123')
 
     // Handle links: [text](url)
     const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g
@@ -41,14 +41,23 @@ function markdownToHtml(markdown) {
       links.push({ text: match[1], url: match[2] })
     }
 
-    // Handle italic text FIRST: *text* or _text_ (before links to avoid conflicts)
-    const italicPattern = /(\*|_)([^*_]+)\1/g
+    // Handle bold text FIRST: **text** (before italic to avoid conflicts)
+    const boldPattern = /\*\*([^*]+)\*\*/g
+    const bolds = []
+    let boldMatch
+    while ((boldMatch = boldPattern.exec(processedText)) !== null) {
+      bolds.push(boldMatch[1])
+    }
+    processedText = processedText.replace(boldPattern, 'BOLDPLACEHOLDER123')
+
+    // Handle italic text: *text* or _text_ (single asterisks/underscores)
+    const italicPattern = /(?<!\*)(\*)(?!\*)([^*]+)(?<!\*)\1(?!\*)|(_)([^_]+)\3/g
     const italics = []
     let italicMatch
     while ((italicMatch = italicPattern.exec(processedText)) !== null) {
-      italics.push(italicMatch[2])
+      italics.push(italicMatch[2] || italicMatch[4])
     }
-    processedText = processedText.replace(italicPattern, '___ITALIC___')
+    processedText = processedText.replace(italicPattern, 'ITALICPLACEHOLDER123')
 
     // Replace links with placeholders AFTER italic processing
     processedText = processedText.replace(linkPattern, 'LINKPLACEHOLDER123')
@@ -73,14 +82,21 @@ function markdownToHtml(markdown) {
       // Reduce telephone image by 40% (36% width - reduced from 60%)
       const isTelephone = encodedUrl.includes('Telephone')
       const widthClass = isTelephone ? 'w-[36%] mx-auto' : 'w-full'
-      processedText = processedText.replace('___IMAGE___',
+      processedText = processedText.replace('IMAGEPLACEHOLDER123',
         `<img src="${encodedUrl}" alt="${escapeHtml(alt)}" class="${widthClass} my-8 rounded-lg" />`)
+    })
+
+    // Restore bold text as HTML
+    bolds.forEach((text) => {
+      const escapedText = escapeHtml(text)
+      processedText = processedText.replace('BOLDPLACEHOLDER123',
+        `<strong class="font-semibold">${escapedText}</strong>`)
     })
 
     // Restore italic text as HTML
     italics.forEach((text) => {
       const escapedText = escapeHtml(text)
-      processedText = processedText.replace('___ITALIC___',
+      processedText = processedText.replace('ITALICPLACEHOLDER123',
         `<em>${escapedText}</em>`)
     })
 
