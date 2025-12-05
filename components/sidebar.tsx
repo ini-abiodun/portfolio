@@ -140,15 +140,17 @@ export function MobileDrawer({
           ))}
         </nav>
 
-        {/* Wax Seal on mobile */}
-        <div className="absolute bottom-6 left-6 z-10">
-          <img 
-            src="/IniOluwa Seal 1.png" 
-            alt="OMÒ ASÍWAJU Seal" 
-            className="object-contain"
-            style={{ width: '80px', height: '80px' }}
-          />
-        </div>
+        {/* Wax Seal on mobile - only show when not on About page */}
+        {activeTab !== "about" && (
+          <div className="absolute bottom-6 left-6 z-10">
+            <img 
+              src="/IniOluwa Seal 1.png" 
+              alt="OMÒ ASÍWAJU Seal" 
+              className="object-contain"
+              style={{ width: '80px', height: '80px' }}
+            />
+          </div>
+        )}
       </div>
     </>
   )

@@ -190,7 +190,7 @@ function markdownToHtml(markdown) {
         quote.push(lines[i].replace(/^>\s?/, ""))
         i++
       }
-      html.push(`<blockquote>${escapeHtml(quote.join("\n")).replace(/\n/g, "<br/>")}</blockquote>`)
+      html.push(`<blockquote>${processInlineMarkdown(quote.join("\n")).replace(/\n/g, "<br/>")}</blockquote>`)
       continue
     }
 
