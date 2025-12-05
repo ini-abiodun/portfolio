@@ -43,12 +43,12 @@ export function SpeakingList({ selectedSpeaking, onSelectSpeaking, width, isDrag
                   onClick={() => onSelectSpeaking(item.slug)}
                   className="w-full text-left space-y-1.5 py-3 transition-colors group"
                 >
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-start gap-2">
                     <img 
                       src="/Bookshelf/pen-nib.svg" 
                       alt="" 
                       className={cn(
-                        "w-3 h-3 transition-opacity duration-200 flex-shrink-0",
+                        "w-3 h-3 transition-opacity duration-200 flex-shrink-0 mt-[0.35rem]",
                         selectedSpeaking === item.slug ? "opacity-100" : "opacity-0 group-hover:opacity-50"
                       )}
                     />
