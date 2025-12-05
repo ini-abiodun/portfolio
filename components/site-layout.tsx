@@ -18,7 +18,7 @@ export function SiteLayout({ children }: SiteLayoutProps) {
       {/* Mobile hamburger button */}
       <button
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        className="fixed top-5 left-5 z-[60] md:hidden bg-background border border-border rounded-lg p-2.5 hover:bg-muted shadow-md"
+        className="fixed top-5 right-5 z-[60] md:hidden bg-background border border-border rounded-lg p-2.5 hover:bg-muted shadow-md"
         aria-label="Toggle menu"
       >
         {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
