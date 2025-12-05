@@ -74,7 +74,7 @@ export const books: Book[] = [
     "hasNotes": true,
     "isReading": true,
     "coverImage": "/Bookshelf/Circe.png",
-    "content": "<blockquote><em>I am loving the modern retellings of these Greek mythologies. Madeline Miller is an absolute beast of a writer.</em></blockquote>\n<p>TO BE CONTINUED...</p>"
+    "content": "<blockquote><em>I am loving the modern retellings of these Greek mythologies. Madeline Miller is an absolute beast of a writer.</em></blockquote>"
   },
   {
     "slug": "firstborn-of-the-sun",
@@ -153,10 +153,11 @@ export const books: Book[] = [
     "title": "The Song of Achilles",
     "author": "Madeline Miller",
     "year": 2011,
+    "lastUpdated": "12-05-2025",
     "hasNotes": true,
     "isReading": true,
     "coverImage": "/Bookshelf/TheSongofAchilles.png",
-    "content": "<p>I have heard such good things about Madeleine. Nothing prepared me for actually reading her books. Her writing flows uncomplicated, like drinking a warm cuppa and thick blanket on a rainy day. I tucked in and find myself eager to return to it.</p>"
+    "content": "<blockquote><em>I have heard such good things about Madeleine. Nothing prepared me for actually reading her books. Her writing flows uncomplicated, like drinking a warm cuppa and thick blanket on a rainy day. I tucked in and find myself eager to return to it.</em></blockquote>"
   },
   {
     "slug": "strategy",
