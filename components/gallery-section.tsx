@@ -8,12 +8,29 @@ export function GallerySection() {
       className="flex-1 min-h-screen flex flex-col"
       style={{ backgroundColor: '#2A0107' }}
     >
-      <main className="flex-1 flex items-center justify-center px-6 md:px-16 py-16">
+      <main className="flex-1 flex flex-col items-center justify-center px-6 md:px-16 py-16">
+        <p className="font-mono text-xs uppercase tracking-widest mb-8 text-white/80">
+          THE ART OF ÌNÍOLÚWA
+        </p>
+        
         <img 
           src="/3. Gallery/Woman.png" 
           alt="Woman" 
-          className="max-w-full max-h-[80vh] object-contain"
+          className="object-contain"
+          style={{ maxWidth: '60%', maxHeight: '60vh' }}
         />
+        
+        <div className="mt-8 text-center text-white/80">
+          <p className="font-sans text-lg mb-2">
+            Woman, 2018
+          </p>
+          <p className="font-sans text-sm text-white/60 max-w-md">
+            A study of shapes and the female form.
+          </p>
+          <p className="font-sans text-sm text-white/60 max-w-md">
+            Continuously painted over 17 hours.
+          </p>
+        </div>
       </main>
       
       <div className="px-6 md:px-16 pb-8">
