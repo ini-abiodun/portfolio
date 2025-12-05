@@ -1,12 +1,9 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { Footer } from "./footer"
-
-interface AboutSectionProps {
-  onNavigateToSpeaking?: () => void
-}
 
 function HoverWord({ children, onHover, onLeave }: { children: string; onHover: () => void; onLeave: () => void }) {
   return (
@@ -20,7 +17,7 @@ function HoverWord({ children, onHover, onLeave }: { children: string; onHover: 
   )
 }
 
-export function AboutSection({ onNavigateToSpeaking }: AboutSectionProps) {
+export function AboutSection() {
   const [showImage, setShowImage] = useState(false)
   const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 })
 
@@ -108,12 +105,12 @@ export function AboutSection({ onNavigateToSpeaking }: AboutSectionProps) {
           >
             LinkedIn
           </a>
-          <button
-            onClick={onNavigateToSpeaking}
-            className="text-foreground opacity-70 underline decoration-dotted decoration-1 underline-offset-2 transition-all hover:opacity-100 hover:decoration-solid text-left"
+          <Link
+            href="/speaking"
+            className="text-foreground opacity-70 underline decoration-dotted decoration-1 underline-offset-2 transition-all hover:opacity-100 hover:decoration-solid"
           >
             Speaking
-          </button>
+          </Link>
         </div>
       </div>
 
