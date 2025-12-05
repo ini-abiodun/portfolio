@@ -32,7 +32,7 @@ function markdownToHtml(markdown) {
     // Replace images with placeholders
     let processedText = text.replace(imagePattern, 'IMAGEPLACEHOLDER123')
 
-    // Handle links: [text](url)
+    // Handle links: [text](url) - MUST replace BEFORE italic processing
     const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g
     const links = []
 
@@ -40,8 +40,11 @@ function markdownToHtml(markdown) {
     while ((match = linkPattern.exec(processedText)) !== null) {
       links.push({ text: match[1], url: match[2] })
     }
+    
+    // Replace links with placeholders BEFORE italic processing
+    processedText = processedText.replace(linkPattern, 'LINKPLACEHOLDER123')
 
-    // Handle bold text FIRST: **text** (before italic to avoid conflicts)
+    // Handle bold text: **text** (before italic to avoid conflicts)
     const boldPattern = /\*\*([^*]+)\*\*/g
     const bolds = []
     let boldMatch
@@ -58,9 +61,6 @@ function markdownToHtml(markdown) {
       italics.push(italicMatch[2] || italicMatch[4])
     }
     processedText = processedText.replace(italicPattern, 'ITALICPLACEHOLDER123')
-
-    // Replace links with placeholders AFTER italic processing
-    processedText = processedText.replace(linkPattern, 'LINKPLACEHOLDER123')
 
     // Escape HTML in the remaining text
     processedText = escapeHtml(processedText)
