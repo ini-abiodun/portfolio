@@ -149,16 +149,6 @@ export const books: Book[] = [
     "content": ""
   },
   {
-    "slug": "song-of-achilles",
-    "title": "The Song of Achilles",
-    "author": "Madeline Miller",
-    "year": 2011,
-    "hasNotes": false,
-    "isReading": true,
-    "coverImage": "/Bookshelf/The%20Song%20of%20Achilles.png",
-    "content": ""
-  },
-  {
     "slug": "strategy",
     "title": "Strategy",
     "author": "Harvard Business Review",
