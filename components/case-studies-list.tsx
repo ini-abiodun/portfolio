@@ -63,7 +63,7 @@ export function CaseStudiesList({ selectedCaseStudy, onSelectCaseStudy, width, i
                     <div className="flex items-baseline gap-2">
                       <h2 className="text-base font-medium text-foreground">{caseStudy.title}</h2>
                     </div>
-                    <p className="text-xs text-muted-foreground font-mono uppercase tracking-widest">{formatDateForList(caseStudy.date)}</p>
+                    <p className="text-xs text-muted-foreground font-sans uppercase tracking-widest">{formatDateForList(caseStudy.date)}</p>
                   </div>
                 ) : (
                   <button
@@ -81,7 +81,7 @@ export function CaseStudiesList({ selectedCaseStudy, onSelectCaseStudy, width, i
                       />
                       <h2 className="text-base font-medium text-foreground">{caseStudy.title}</h2>
                     </div>
-                    <p className="text-xs text-muted-foreground font-mono uppercase tracking-widest pl-5">{formatDateForList(caseStudy.date)}</p>
+                    <p className="text-xs text-muted-foreground font-sans uppercase tracking-widest pl-5">{formatDateForList(caseStudy.date)}</p>
                   </button>
                 )}
                 {index < sortedCaseStudies.length - 1 && (
