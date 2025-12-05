@@ -111,6 +111,12 @@ export function AboutSection() {
           >
             Speaking
           </Link>
+          <a
+            href="mailto:ini.faithabiodun@gmail.com"
+            className="text-foreground opacity-70 underline decoration-dotted decoration-1 underline-offset-2 transition-all hover:opacity-100 hover:decoration-solid"
+          >
+            Contact me
+          </a>
         </div>
       </div>
 
