@@ -155,6 +155,7 @@ export const books: Book[] = [
     "year": 2011,
     "hasNotes": false,
     "isReading": true,
+    "coverImage": "/Bookshelf/The Song of Achilles.png",
     "content": ""
   },
   {
