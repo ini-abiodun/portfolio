@@ -43,11 +43,18 @@ export function NotesList({ selectedNote, onSelectNote, width, isDragging, onMou
                   onClick={() => onSelectNote(note.slug)}
                   className="w-full text-left space-y-1.5 py-3 transition-colors group"
                 >
-                  <div className="flex items-baseline gap-2">
+                  <div className="flex items-center gap-2">
+                    <img 
+                      src="/Pen-Vector.png" 
+                      alt="" 
+                      className={cn(
+                        "w-3 h-3 transition-opacity duration-200 flex-shrink-0",
+                        selectedNote === note.slug ? "opacity-100" : "opacity-0 group-hover:opacity-50"
+                      )}
+                    />
                     <h2 className="text-base font-medium text-foreground">{note.title}</h2>
-                    <span className="text-muted-foreground text-sm transition-transform duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
                   </div>
-                  <p className="text-xs text-muted-foreground font-mono uppercase tracking-widest">{note.date}</p>
+                  <p className="text-xs text-muted-foreground font-mono uppercase tracking-widest pl-5">{note.date}</p>
                 </button>
                 {index < sortedNotes.length - 1 && (
                   <div className="h-px bg-border my-4" />

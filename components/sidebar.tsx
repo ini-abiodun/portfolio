@@ -48,18 +48,10 @@ export function Sidebar({ activeTab, onTabChange, width, isDragging, onMouseDown
               key={tab}
               onClick={() => onTabChange(tab)}
               className={cn(
-                "text-left py-1 transition-colors uppercase tracking-widest text-xs flex items-center gap-2 group",
+                "text-left py-1 transition-colors uppercase tracking-widest text-xs",
                 activeTab === tab ? "text-foreground" : "text-foreground/40 hover:text-foreground/70",
               )}
             >
-              <img 
-                src="/Pen-Vector.png" 
-                alt="" 
-                className={cn(
-                  "w-3 h-3 transition-opacity duration-200",
-                  activeTab === tab ? "opacity-100" : "opacity-0 group-hover:opacity-50"
-                )}
-              />
               {tab === "case-studies" ? "Case Studies" : tab === "speaking" ? "Speaking" : tab.charAt(0).toUpperCase() + tab.slice(1)}
             </button>
           ))}
@@ -139,18 +131,10 @@ export function MobileDrawer({
                 onClose()
               }}
               className={cn(
-                "text-left py-2 transition-colors uppercase tracking-widest text-sm flex items-center gap-2 group",
+                "text-left py-2 transition-colors uppercase tracking-widest text-sm",
                 activeTab === tab ? "text-foreground font-medium" : "text-foreground/50",
               )}
             >
-              <img 
-                src="/Pen-Vector.png" 
-                alt="" 
-                className={cn(
-                  "w-3 h-3 transition-opacity duration-200",
-                  activeTab === tab ? "opacity-100" : "opacity-0 group-hover:opacity-50"
-                )}
-              />
               {tab === "case-studies" ? "Case Studies" : tab === "speaking" ? "Speaking" : tab.charAt(0).toUpperCase() + tab.slice(1)}
             </button>
           ))}

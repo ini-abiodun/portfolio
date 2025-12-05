@@ -96,13 +96,18 @@ export function BookshelfList({ selectedBook, onSelectBook, width, isDragging, o
                           !book.hasNotes && "cursor-default",
                         )}
                       >
-                        <div className="flex items-baseline gap-2">
+                        <div className="flex items-center gap-2">
+                          <img 
+                            src="/Pen-Vector.png" 
+                            alt="" 
+                            className={cn(
+                              "w-3 h-3 transition-opacity duration-200 flex-shrink-0",
+                              selectedBook === book.slug ? "opacity-100" : "opacity-0 group-hover:opacity-50"
+                            )}
+                          />
                           <div className="text-base font-medium text-foreground">{book.title}</div>
-                          {book.hasNotes && (
-                            <span className="text-muted-foreground text-sm transition-transform duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
-                          )}
                         </div>
-                        <div className="text-sm text-muted-foreground">
+                        <div className="text-sm text-muted-foreground pl-5">
                           {book.author}, {book.year}
                         </div>
                       </button>
@@ -135,13 +140,18 @@ export function BookshelfList({ selectedBook, onSelectBook, width, isDragging, o
                           !book.hasNotes && "cursor-default",
                         )}
                       >
-                        <div className="flex items-baseline gap-2">
+                        <div className="flex items-center gap-2">
+                          <img 
+                            src="/Pen-Vector.png" 
+                            alt="" 
+                            className={cn(
+                              "w-3 h-3 transition-opacity duration-200 flex-shrink-0",
+                              selectedBook === book.slug ? "opacity-100" : "opacity-0 group-hover:opacity-50"
+                            )}
+                          />
                           <div className={cn("text-base font-medium text-foreground", book.hasNotes && "group-hover:underline")}>{book.title}</div>
-                          {book.hasNotes && (
-                            <span className="text-muted-foreground text-sm transition-transform duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
-                          )}
                         </div>
-                        <div className="text-sm text-muted-foreground">
+                        <div className="text-sm text-muted-foreground pl-5">
                           {book.author}, {book.year}
                         </div>
                       </button>
