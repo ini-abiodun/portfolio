@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils"
 import { ResizeHandle } from "./resize-handle"
+import { motion } from "framer-motion"
 
 type Tab = "about" | "bookshelf" | "notes" | "case-studies" | "speaking" | "gallery"
 
@@ -29,18 +30,44 @@ export function Sidebar({ activeTab, onTabChange, width, isDragging, onMouseDown
       )}
     >
       <div style={{ width: `${width}px` }} className="h-full">
-        {/* Ribbon Bookmark */}
-        <div className="absolute top-0 left-8 w-8 h-40 z-10 group">
-          <div
-            className="w-full h-full relative overflow-hidden"
-            style={{
-              backgroundImage: 'url("/3. Gallery/Bookmark-Material.jpeg")',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              clipPath: 'polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 12px), 0 100%)',
-              boxShadow: '2px 2px 6px rgba(0,0,0,0.3)',
+        {/* Ribbon Bookmark with 3D unfurl animation */}
+        <div className="absolute top-0 left-8 w-8 h-40 z-10 group" style={{ perspective: '800px' }}>
+          <motion.div
+            initial={{ rotateX: -90, opacity: 0 }}
+            animate={{ rotateX: 0, opacity: 1 }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 120, 
+              damping: 14,
+              delay: 0.2 
             }}
-          />
+            style={{ transformOrigin: "top center", transformStyle: "preserve-3d" }}
+            className="w-full h-full"
+          >
+            {/* Inner div with pendulum sway animation */}
+            <motion.div
+              animate={{ rotateZ: [0, 1, 0, -1, 0] }}
+              transition={{ 
+                duration: 4, 
+                repeat: Infinity, 
+                ease: "easeInOut",
+                delay: 1 // Start sway after unfurl completes
+              }}
+              style={{ transformOrigin: "top center" }}
+              className="w-full h-full"
+            >
+              <div
+                className="w-full h-full relative overflow-hidden"
+                style={{
+                  backgroundImage: 'url("/3. Gallery/Bookmark-Material.jpeg")',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  clipPath: 'polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 12px), 0 100%)',
+                  boxShadow: '2px 2px 6px rgba(0,0,0,0.3)',
+                }}
+              />
+            </motion.div>
+          </motion.div>
         </div>
 
         <nav className="flex flex-col gap-2 p-8 pt-54">
@@ -110,18 +137,44 @@ export function MobileDrawer({
           isOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
-        {/* Ribbon Bookmark */}
-        <div className="absolute top-0 left-6 w-6 h-32 z-10">
-          <div
-            className="w-full h-full relative overflow-hidden"
-            style={{
-              backgroundImage: 'url("/3. Gallery/Bookmark-Material.jpeg")',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              clipPath: 'polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 10px), 0 100%)',
-              boxShadow: '2px 2px 6px rgba(0,0,0,0.3)',
+        {/* Ribbon Bookmark with 3D unfurl animation */}
+        <div className="absolute top-0 left-6 w-6 h-32 z-10" style={{ perspective: '800px' }}>
+          <motion.div
+            initial={{ rotateX: -90, opacity: 0 }}
+            animate={isOpen ? { rotateX: 0, opacity: 1 } : { rotateX: -90, opacity: 0 }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 120, 
+              damping: 14,
+              delay: isOpen ? 0.15 : 0 
             }}
-          />
+            style={{ transformOrigin: "top center", transformStyle: "preserve-3d" }}
+            className="w-full h-full"
+          >
+            {/* Inner div with pendulum sway animation */}
+            <motion.div
+              animate={isOpen ? { rotateZ: [0, 1, 0, -1, 0] } : { rotateZ: 0 }}
+              transition={{ 
+                duration: 4, 
+                repeat: Infinity, 
+                ease: "easeInOut",
+                delay: 0.8
+              }}
+              style={{ transformOrigin: "top center" }}
+              className="w-full h-full"
+            >
+              <div
+                className="w-full h-full relative overflow-hidden"
+                style={{
+                  backgroundImage: 'url("/3. Gallery/Bookmark-Material.jpeg")',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  clipPath: 'polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 10px), 0 100%)',
+                  boxShadow: '2px 2px 6px rgba(0,0,0,0.3)',
+                }}
+              />
+            </motion.div>
+          </motion.div>
         </div>
 
         <nav className="flex flex-col gap-3 p-6 pt-40">
