@@ -554,6 +554,21 @@ export function StudyRoom() {
               </g>
             </svg>
           </button>
+
+          {/* Mobile Hamburger Menu */}
+          <button
+            className="nav-hamburger"
+            onClick={(e) => {
+              e.stopPropagation()
+              setMenuOpen(!menuOpen)
+            }}
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+          >
+            <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+              <path d="M1 1h18M1 7h18M1 13h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+          </button>
         </div>
       </nav>
     </>
