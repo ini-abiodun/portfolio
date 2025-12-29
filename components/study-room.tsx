@@ -119,7 +119,6 @@ export function StudyRoom() {
   const [hoveredSpot, setHoveredSpot] = useState<string | null>(null)
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 })
   const [showCursor, setShowCursor] = useState(false)
-  const [showHelp, setShowHelp] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [hasMenuBookmarkUnfurled, setHasMenuBookmarkUnfurled] = useState(hasUnfurledHomepageMenu)
   const [isTouchDevice, setIsTouchDevice] = useState(false)
@@ -205,21 +204,6 @@ export function StudyRoom() {
       })
     }
     setHoveredSpot(spotId)
-  }, [])
-
-  // Show help tooltip on first visit
-  useEffect(() => {
-    const hasVisited = localStorage.getItem("study-visited")
-    if (!hasVisited) {
-      const timer = setTimeout(() => setShowHelp(true), 2000)
-      return () => clearTimeout(timer)
-    }
-  }, [])
-
-
-  const dismissHelp = useCallback(() => {
-    setShowHelp(false)
-    localStorage.setItem("study-visited", "true")
   }, [])
 
   // Determine if lights are on for warmth overlay
@@ -325,7 +309,6 @@ export function StudyRoom() {
       <div 
         className="study-room"
         data-lighting={lightingMode}
-        onClick={dismissHelp}
         onMouseMove={(e) => {
           if (containerRef.current) {
             const rect = containerRef.current.getBoundingClientRect()
@@ -427,24 +410,6 @@ export function StudyRoom() {
           )}
         </AnimatePresence>
       </div>
-
-      {/* Help overlay for first-time visitors */}
-      <AnimatePresence>
-        {showHelp && (
-          <motion.div
-            className="study-room__help"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-          >
-            <p>✨ Click around the room to explore</p>
-            <button onClick={dismissHelp} className="study-room__help-dismiss">
-              Got it
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       </div>
 

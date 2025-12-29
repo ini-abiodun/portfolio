@@ -290,8 +290,8 @@ export function DeskScene() {
         ))}
       </div>
 
-      {/* Layer 2: Document images positioned over desk */}
-      <div className="desk-scene__documents">
+      {/* Layer 2: Document images positioned over desk (only show after bg loaded) */}
+      <div className={`desk-scene__documents ${isLoaded ? "loaded" : ""}`}>
         {deskDocuments.map((doc) => (
           <button
             key={doc.id}
