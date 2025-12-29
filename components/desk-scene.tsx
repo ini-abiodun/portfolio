@@ -560,21 +560,6 @@ export function DeskScene() {
         )}
       </AnimatePresence>
 
-      {/* Hint for first-time visitors */}
-      <AnimatePresence>
-        {!focusedDoc && !notepadOpen && !placingMessage && isLoaded && (
-          <motion.div
-            className="desk-scene__hint"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ delay: 1.5, duration: 0.4 }}
-          >
-            <span>Click items on the desk to explore</span>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Lighting Controls - Top Right (matches homepage) */}
       <nav className="desk-scene__nav" aria-label="Lighting controls">
         <div className="nav-lighting" role="group" aria-label="Lighting mode">
