@@ -2,8 +2,9 @@
    SITE SIDEBAR - Matches Homepage Menu Sidebar
    ============================================ */
 
-/* Base sidebar styles */
+/* Base sidebar styles - matches .menu-sidebar */
 .site-sidebar {
+  padding: 2rem;
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 
@@ -25,7 +26,6 @@
   flex-direction: column;
   gap: 0.75rem;
   margin-top: 12rem;
-  padding: 0 2rem;
 }
 
 /* Navigation link styles - matches .menu-sidebar__link exactly */
