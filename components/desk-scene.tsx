@@ -5,6 +5,7 @@ import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { useLighting } from "@/lib/lighting-context"
 import { useMusic } from "@/lib/music-context"
+import { MobileNavDrawer } from "./nav-sidebar"
 
 // Desk document type
 type DeskDocId = "sketchbook" | "worksheet" | "work-history" | "about-me-card" | "call-to-bar" | "notepad" | "aso-oke-swatch"
@@ -133,6 +134,7 @@ const smoothSpring = {
 export function DeskScene() {
   const { mode, setMode } = useLighting()
   const { isPlaying, toggleMusic } = useMusic()
+  const [menuOpen, setMenuOpen] = useState(false)
   const [focusedDoc, setFocusedDoc] = useState<DeskDocument | null>(null)
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set())
   
@@ -676,8 +678,26 @@ export function DeskScene() {
               </g>
             </svg>
           </button>
+
+          {/* Mobile Hamburger Menu */}
+          <button
+            className="nav-hamburger"
+            onClick={(e) => {
+              e.stopPropagation()
+              setMenuOpen(!menuOpen)
+            }}
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+          >
+            <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+              <path d="M1 1h18M1 7h18M1 13h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+          </button>
         </div>
       </nav>
+
+      {/* Mobile Navigation Drawer */}
+      <MobileNavDrawer isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
     </div>
   )
 }

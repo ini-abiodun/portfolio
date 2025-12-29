@@ -954,6 +954,11 @@
   margin: 0 0.25rem;
 }
 
+/* Hamburger - hidden on desktop */
+.desk-scene .nav-hamburger {
+  display: none;
+}
+
 /* Music toggle - vinyl player (copied from homepage) */
 .desk-scene .music-toggle {
   position: relative;
@@ -1104,15 +1109,28 @@
     font-size: 0.75rem;
   }
 
-  /* Nav mobile adjustments */
+  /* Scale up documents on mobile for visibility */
+  .desk-scene__documents {
+    transform: scale(1.4);
+    transform-origin: center center;
+  }
+
+  /* Nav at bottom center on mobile - matches homepage */
   .desk-scene__nav {
-    top: 0.75rem;
-    right: 4rem;
+    top: auto;
+    bottom: 1.5rem;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .desk-scene .nav-lighting {
-    padding: 3px;
-    gap: 0.125rem;
+    padding: 4px;
+    gap: 0.25rem;
+    background: rgba(20, 16, 14, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 200, 120, 0.15);
+    border-radius: 12px;
   }
 
   .desk-scene .lighting-tab {
@@ -1160,6 +1178,26 @@
   .desk-scene .music-toggle__player {
     width: 30px;
     height: 24px;
+  }
+
+  /* Hamburger menu on mobile */
+  .desk-scene .nav-hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 28px;
+    background: transparent;
+    border: none;
+    color: #f5e6d3;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 0.25rem;
+    transition: color 0.2s ease;
+  }
+
+  .desk-scene .nav-hamburger:hover {
+    color: rgba(255, 200, 120, 0.9);
   }
 }
 
