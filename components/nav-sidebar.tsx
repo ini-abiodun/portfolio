@@ -67,14 +67,13 @@ export function NavSidebar({ width, isDragging, onMouseDown }: NavSidebarProps) 
         width: `${width}px`,
       }}
       className={cn(
-        "site-sidebar fixed left-0 top-0 h-screen shrink-0 z-40",
+        "site-sidebar fixed left-0 top-0 h-screen shrink-0 z-40 flex flex-col",
         "hidden md:block",
         isDarkMode ? "site-sidebar--dark" : "site-sidebar--light"
       )}
     >
-      <div className="h-full">
         {/* Ribbon Bookmark with sway animation */}
-        <div className="absolute top-0 left-8 w-8 h-40 z-10 group" style={{ perspective: '800px' }}>
+        <div className="site-sidebar__bookmark" style={{ perspective: '800px' }}>
           <motion.div
             initial={shouldAnimate ? { rotateX: -90, opacity: 0 } : { rotateX: 0, opacity: 1 }}
             animate={{ rotateX: 0, opacity: 1 }}
@@ -129,7 +128,6 @@ export function NavSidebar({ width, isDragging, onMouseDown }: NavSidebarProps) 
         </nav>
 
         <ResizeHandle onMouseDown={onMouseDown} isDragging={isDragging} />
-      </div>
     </aside>
   )
 }
