@@ -485,13 +485,14 @@ export function DeskScene() {
               transition={{ duration: 0.2 }}
               onClick={closeFocus}
             />
-            <motion.div
-              className="desk-scene__notepad"
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ duration: 0.25 }}
-            >
+            <div className="desk-scene__notepad">
+              <motion.div
+                className="desk-scene__notepad-content"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.25 }}
+              >
               <button
                 className="desk-scene__notepad-close"
                 onClick={closeFocus}
@@ -539,7 +540,8 @@ export function DeskScene() {
                   Place sticky
                 </button>
               </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </>
         )}
       </AnimatePresence>
