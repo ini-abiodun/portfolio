@@ -829,12 +829,17 @@
 }
 
 /* ---- AMBIENT (Night) Active ---- */
-.lighting-tab.active:nth-child(1) .lighting-tab__text {
+.lighting-tab.active[data-mode="ambient"] .lighting-tab__text {
   color: var(--ambient-color);
   text-shadow: 0 0 16px rgba(150, 180, 255, 0.8);
 }
 
-.lighting-tab.active:nth-child(1) .lighting-tab__glow {
+.lighting-tab.active[data-mode="ambient"] .lighting-tab__icon {
+  color: var(--ambient-color);
+  filter: drop-shadow(0 0 8px rgba(150, 180, 255, 0.8));
+}
+
+.lighting-tab.active[data-mode="ambient"] .lighting-tab__glow {
   opacity: 1;
   background: radial-gradient(
     ellipse at center bottom,
@@ -843,7 +848,7 @@
   );
 }
 
-.lighting-tab.active:nth-child(1) .lighting-tab__line {
+.lighting-tab.active[data-mode="ambient"] .lighting-tab__line {
   opacity: 1;
   background: linear-gradient(
     90deg,
@@ -856,12 +861,17 @@
 }
 
 /* ---- WARM (Day On) Active ---- */
-.lighting-tab.active:nth-child(2) .lighting-tab__text {
+.lighting-tab.active[data-mode="warm"] .lighting-tab__text {
   color: var(--warm-color);
   text-shadow: 0 0 16px rgba(255, 180, 80, 0.8);
 }
 
-.lighting-tab.active:nth-child(2) .lighting-tab__glow {
+.lighting-tab.active[data-mode="warm"] .lighting-tab__icon {
+  color: var(--warm-color);
+  filter: drop-shadow(0 0 8px rgba(255, 180, 80, 0.8));
+}
+
+.lighting-tab.active[data-mode="warm"] .lighting-tab__glow {
   opacity: 1;
   background: radial-gradient(
     ellipse at center bottom,
@@ -870,7 +880,7 @@
   );
 }
 
-.lighting-tab.active:nth-child(2) .lighting-tab__line {
+.lighting-tab.active[data-mode="warm"] .lighting-tab__line {
   opacity: 1;
   background: linear-gradient(
     90deg,
@@ -883,12 +893,17 @@
 }
 
 /* ---- NATURAL (Day Off) Active ---- */
-.lighting-tab.active:nth-child(3) .lighting-tab__text {
+.lighting-tab.active[data-mode="natural"] .lighting-tab__text {
   color: var(--natural-color);
   text-shadow: 0 0 12px rgba(245, 230, 211, 0.5);
 }
 
-.lighting-tab.active:nth-child(3) .lighting-tab__glow {
+.lighting-tab.active[data-mode="natural"] .lighting-tab__icon {
+  color: var(--natural-color);
+  filter: drop-shadow(0 0 6px rgba(245, 230, 211, 0.5));
+}
+
+.lighting-tab.active[data-mode="natural"] .lighting-tab__glow {
   opacity: 1;
   background: radial-gradient(
     ellipse at center bottom,
@@ -897,7 +912,7 @@
   );
 }
 
-.lighting-tab.active:nth-child(3) .lighting-tab__line {
+.lighting-tab.active[data-mode="natural"] .lighting-tab__line {
   opacity: 1;
   background: linear-gradient(
     90deg,
@@ -1027,22 +1042,6 @@
     display: block;
     width: 16px;
     height: 16px;
-  }
-
-  /* Icon colors for active states on mobile */
-  .lighting-tab.active:nth-child(1) .lighting-tab__icon {
-    color: var(--ambient-color);
-    filter: drop-shadow(0 0 8px rgba(150, 180, 255, 0.8));
-  }
-
-  .lighting-tab.active:nth-child(2) .lighting-tab__icon {
-    color: var(--warm-color);
-    filter: drop-shadow(0 0 8px rgba(255, 180, 80, 0.8));
-  }
-
-  .lighting-tab.active:nth-child(3) .lighting-tab__icon {
-    color: var(--natural-color);
-    filter: drop-shadow(0 0 6px rgba(245, 230, 211, 0.5));
   }
 
   /* Music toggle mobile styles */

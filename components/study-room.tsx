@@ -441,7 +441,7 @@ export function StudyRoom() {
           <div className="nav-lighting__divider nav-hamburger-divider" aria-hidden="true" />
 
           {/* Ambient (Moon) */}
-          <label className={`lighting-tab ${activeScene === "nightOn" ? "active" : ""}`}>
+          <label className={`lighting-tab ${activeScene === "nightOn" ? "active" : ""}`} data-mode="ambient">
             <input
               type="radio"
               name="lighting"
@@ -458,7 +458,7 @@ export function StudyRoom() {
           </label>
 
           {/* Warm (Sun) */}
-          <label className={`lighting-tab ${activeScene === "dayOn" ? "active" : ""}`}>
+          <label className={`lighting-tab ${activeScene === "dayOn" ? "active" : ""}`} data-mode="warm">
             <input
               type="radio"
               name="lighting"
@@ -483,7 +483,7 @@ export function StudyRoom() {
           </label>
 
           {/* Natural (Sun dim - no rays) */}
-          <label className={`lighting-tab ${activeScene === "dayOff" ? "active" : ""}`}>
+          <label className={`lighting-tab ${activeScene === "dayOff" ? "active" : ""}`} data-mode="natural">
             <input
               type="radio"
               name="lighting"
